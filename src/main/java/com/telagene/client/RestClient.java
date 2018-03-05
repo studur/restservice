@@ -1,49 +1,23 @@
 package com.telagene.client;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
 
 public class RestClient {
 
+   public static final String REST_SERVICE_BASE_URL = "http://127.0.0.1:8088/rest/";
 
    public static void main(String[] args) {
-      String USER_AGENT = "Mozilla/5.0";
-      String url = "http://localhost:8088/rest/status";
 
-      URL obj = null;
-      try {
-         obj = new URL(url);
 
-      HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+      Client client = ClientBuilder.newClient();
+      WebTarget target = client.target(REST_SERVICE_BASE_URL);
+      String response = target.path("status").request().get(String.class);
 
-      // optional default is GET
-      con.setRequestMethod("GET");
+      System.out.println(response.toString());
 
-      //add request header
-      con.setRequestProperty("User-Agent", USER_AGENT);
-
-      int responseCode = con.getResponseCode();
-      System.out.println("\nSending 'GET' request to URL : " + url);
-      System.out.println("Response Code : " + responseCode);
-
-      BufferedReader in = new BufferedReader(
-            new InputStreamReader(con.getInputStream()));
-      String inputLine;
-      StringBuffer response = new StringBuffer();
-
-      while ((inputLine = in.readLine()) != null) {
-         response.append(inputLine);
-      }
-      in.close();
-         //print result
-         System.out.println(response.toString());
-      } catch (Exception e) {
-         e.printStackTrace();
-      }
-
+      client.close();
 
    }
 }
