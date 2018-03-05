@@ -1,3 +1,7 @@
+/*
+ * Code adapted from Oracle tutorials and jersey.github.io
+ */
+
 package com.telagene.rest;
 
 import org.glassfish.grizzly.http.server.HttpServer;
@@ -13,7 +17,7 @@ public class RestService {
 
    public static HttpServer startServer() {
       // create a resource config that scans for JAX-RS resources and providers
-      // in com.example.rest package
+      // in com.telagene.rest package
       final ResourceConfig rc = new ResourceConfig().packages("com.telagene.rest");
 
       // create and start a new instance of grizzly http server
@@ -22,10 +26,6 @@ public class RestService {
    }
 
    public static void main(String[] args) throws IOException {
-      final HttpServer server = startServer();
-      System.out.println(String.format("Jersey app started with WADL available at "
-            + "%sapplication.wadl\nHit enter to stop it...", BASE_URI));
-      System.in.read();
-      server.stop();
+      startServer();
    }
 }
