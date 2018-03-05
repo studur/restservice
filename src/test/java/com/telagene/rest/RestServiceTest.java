@@ -9,6 +9,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.telagene.rest.model.Book;
+
 import static org.junit.Assert.assertTrue;
 
 public class RestServiceTest {
@@ -24,9 +26,15 @@ public class RestServiceTest {
    }
 
    @Test
-   public void testRestService() {
+   public void testRestServiceAtStatusPath() {
       String responseMsg = target.path("status").request().get(String.class);
       assertTrue(responseMsg.contains("Running"));
+   }
+
+   @Test
+   public void testRestServiceAtBookPath() {
+      Book responseMsg = target.path("books/1").request().get(Book.class);
+      assertTrue(responseMsg.toString().contains("Book{title="));
    }
 
    @After

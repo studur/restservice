@@ -8,11 +8,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-/* Root resource (exposed at "status" path) */
-@Path("status")
+@Path("/")
 public class Resources {
 
    @GET
+   @Path("status")
    @Produces(MediaType.TEXT_PLAIN)
    public String getIt() {
       LocalDateTime localDateTime = LocalDateTime.now();
