@@ -26,9 +26,10 @@
          <artifactId>jersey-container-grizzly2-http</artifactId>
       </dependency>
 
+      <!-- better use Jackson for POST deserialization -->
       <dependency>
          <groupId>org.glassfish.jersey.media</groupId>
-         <artifactId>jersey-media-moxy</artifactId>
+         <artifactId>jersey-media-json-jackson</artifactId>
       </dependency>
 
       <dependency>
@@ -63,7 +64,7 @@
                </execution>
             </executions>
             <configuration>
-               <mainClass>com.telagene.rest.RestService</mainClass>
+               <mainClass>com.telagene.rest.RestServer</mainClass>
             </configuration>
          </plugin>
       </plugins>

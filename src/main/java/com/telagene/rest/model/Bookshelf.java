@@ -8,21 +8,22 @@ import java.util.List;
  */
 public class Bookshelf {
 
-   public static final List<Book> books = new ArrayList<>();
+   public final List<Book> books = new ArrayList<>();
 
 
    public Bookshelf() {
    }
 
-   public static Book getBook(int id) {
+   public Book getBook(int id) {
       return books.get(id);
    }
 
-   public static void addBook(Book book) {
+   public Book addBook(Book book) {
       books.add(book);
+      return book;
    }
 
-   public static List<Book> getBooks() {
+   public List<Book> getBooks() {
       return books;
    }
 }

@@ -1,4 +1,4 @@
-package com.telagene.rest;
+package com.telagene.rest.resources;
 
 
 import java.time.LocalDateTime;
